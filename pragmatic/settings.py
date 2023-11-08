@@ -17,20 +17,20 @@ from pathlib import Path
 from environ import Env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+
+env = Env(
+    DEBUG=(bool, False)
+)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = Env()
-env_path = BASE_DIR / ".env"
-if env_path.exists():
-    with env_path.open() as f:
-        env.read_env(f)
+Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 # 근데 타입을 맞춰줘야한다
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
-
+SECRET_KEY = 'django-insecure-m3s^zbjx$=8s21(lurp7y1&6cr-9vidvg(@jmy^=gd2z78u^=c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
