@@ -20,5 +20,6 @@ from accountapp import views as accountapp_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('accountapp.urls')),
+    path('profile/', include('profileapp.urls')),
 
 ]
