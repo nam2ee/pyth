@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+    <h1 style="text-align: center">
+        Hello World List!!
+    </h1>
+
+    <form action="/account/hello_world/" method="post" style="text-align: center">
+        {% csrf_token %} <!-- 장고에서 제공하는 보안 기능-->
+        <div>
+            <input type="text" name="hello_world_input">
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary">
+        </div>
+        {% if hello_world_output %}
+        <div>
+            {{ hello_world_output.text }}
+        </div>
+        {% endif %}
+        {% for i in hello_world_list %}
+            {{ i.text }}
+        {% endfor %}
+
+    </form>
+
+{% endblock %}

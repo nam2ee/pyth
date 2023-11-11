@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+    <div >
+        <div>
+            <h4 style="text-align: center">Login</h4>
+        </div>
+
+        <div style="text-align: center; display:flex;justify-content: center">
+            <form action="" method="post" style="width: 20rem; ">
+                {% csrf_token %}
+                {% bootstrap_form form %} <!-- 로그인 뷰에서 제공 -->
+                <input type="submit" class = "btn btn-dark rounded-pill col-3 mt-2">
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

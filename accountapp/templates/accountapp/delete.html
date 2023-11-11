@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+    <div>
+    <p>계정을 삭제</p>
+        <form action= "{% url 'accountapp:delete' pk=target_user.pk  %}" method="POST" style="display: flex; justify-content: center">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+                <button type="submit" class="btn btn-primary">삭제</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="display: flex; justify-content: center">
+
+        <div >
+            <h1 style="text-align: center">{{ target_user.date_joined }}</h1>
+            <h1 style="text-align: center">{{ target_user.username }}</h1>
+            {% if target_user == user%}
+                <div style="display: flex; justify-content: center">
+                <div>
+                    <a href="{% url 'accountapp:update' pk=user.pk %}"
+                    style="text-align: center">Edit Profile</a>
+                    <br>
+                    <a href="{% url 'accountapp:delete' pk=user.pk %}">Delelte Profile</a>
+                </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+{% endblock %}
