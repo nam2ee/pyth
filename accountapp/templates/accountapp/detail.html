@@ -4,17 +4,35 @@
     <div style="display: flex; justify-content: center">
 
         <div >
-            <h1 style="text-align: center">{{ target_user.date_joined }}</h1>
-            <h1 style="text-align: center">{{ target_user.username }}</h1>
-            {% if target_user == user%}
-                <div style="display: flex; justify-content: center">
-                <div>
-                    <a href="{% url 'accountapp:update' pk=user.pk %}"
-                    style="text-align: center">Edit Profile</a>
-                    <br>
-                    <a href="{% url 'accountapp:delete' pk=user.pk %}">Delelte Profile</a>
-                </div>
-                </div>
+            {% if target_user.profile %}
+                <img src="{{ target_user.profile.image.url }}" style="width: 300px; height: 300px; border-radius: 50%; margin: 0 auto; display: block">
+                <h1 style="text-align: center; margin: 1rem;">{{ target_user.profile.nickname }}</h1>
+                <h3 style="text-align: center; margin: 1rem">{{ target_user.profile.message }}</h3>
+                {% if target_user == user%}
+                    <div style="display: flex; justify-content: center">
+                    <div>
+
+                        <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}"
+                        style="text-align: center">Edit Profile</a>
+                        <br>
+                        <a href="{% url 'accountapp:delete' pk=user.pk %}">Delelte Profile</a>
+
+                    </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <h1>there is not profile!</h1>
+                {% if target_user == user%}
+                    <div style="display: flex; justify-content: center">
+                    <div>
+
+                        <a href="{% url 'profileapp:create'%}"
+                        style="text-align: center">Create Profile!</a>
+
+                    </div>
+                    </div>
+                {% endif %}
+
             {% endif %}
         </div>
     </div>
